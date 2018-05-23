@@ -67,3 +67,16 @@ def login():
         flash(error)
 
     return render_template('auth/login.html')
+
+
+@bp.before_app_request
+def load_logged_in_user():
+    """Load the logged in user if user is logged in."""
+    user_id = session.get('user_id')
+
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = get_db().execute(
+            'SELECT * FROM user WHERE id = ?', (user_id,)
+        ).fetchone()
