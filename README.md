@@ -10,5 +10,8 @@ A blog application built with flask.
     - `source ENV/bin/activate`
 - Install dependencies 
     - `pip install -e .`
+- Add ENV variables:
+    - `export FLASK_APP=flaskr`
+    - `export FLASK_ENV=development`
 - Run local server 
     - `flask run`
